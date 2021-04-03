@@ -1,0 +1,73 @@
+header {
+  background: brown;
+  border-bottom: midnightblue solid 3px;
+}
+body {
+  background-color: rgb(246, 247, 235);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+div.container {
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  justify-content: center;
+}
+input{
+  margin: 5px;
+  padding: 5px;
+}
+label {
+  display: inline-block;
+  padding: 10px;
+  width: 140px;
+  margin: 5px;
+}
+#redirect {
+  margin-top: 20px;
+  text-align: center;
+}
+a {
+  color: midnightblue;
+}
+a:visited {
+  color: midnightblue;
+}
+#buttons {
+  display: flex;
+}
+#submitForm {
+  margin: 60px 10px 30px ;
+  padding: 10px 20px;
+  width: 100px;
+  background-color: brown;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.submitBtn {
+  display: flex;
+  justify-content: center;
+}
+footer {
+  background-color: brown;
+  border-top: midnightblue solid 3px;
+  color: white;
+  text-align: center;
+}
+footer p {
+  margin: 0px;
+  padding: 1% 0%;
+}
