@@ -1,20 +1,20 @@
-header {
-  background: brown;
-  border-bottom: midnightblue solid 3px;
-}
 body {
+  margin: 0;
   background-color: rgb(246, 247, 235);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  margin: 0;
+}
+header {
+  border-bottom: midnightblue solid 3px;
+  background: brown;
 }
 h1 {
+  padding: 15px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   font-size: 20px;
   font-weight: bold;
-  padding: 15px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -24,15 +24,15 @@ div.container {
   padding-bottom: 70px;
   justify-content: center;
 }
-input{
-  margin: 5px;
-  padding: 5px;
-}
 label {
   display: inline-block;
   padding: 10px;
-  width: 140px;
   margin: 5px;
+  width: 140px;
+}
+input{
+  margin: 5px;
+  padding: 5px;
 }
 #redirect {
   margin-top: 20px;
@@ -46,6 +46,7 @@ a:visited {
 }
 #buttons {
   display: flex;
+  justify-content: center;
 }
 #submitForm {
   margin: 60px 10px 30px ;
@@ -62,8 +63,8 @@ a:visited {
   justify-content: center;
 }
 footer {
-  background-color: brown;
   border-top: midnightblue solid 3px;
+  background-color: brown;
   color: white;
   text-align: center;
 }

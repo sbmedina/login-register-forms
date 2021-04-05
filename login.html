@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>
+      Login
+    </title>
     <link rel= "stylesheet" type="text/css" href="css/reset.css">
     <link rel= "stylesheet" type="text/css" href="css/style.css">
   </head>
@@ -14,6 +16,44 @@
         login
       </h1>
     </header>
+    <section>
+      <div id="validations">
+      </div>
+      <div class="container">
+        <form id="registerForm">
+          <div>
+            <label for="email">
+              E-mail:
+            </label>
+            <input id="email" type="email" required>
+          </div>
+          <div>
+            <label for="password">
+              Password:
+            </label>
+            <input id="password" type="password" required>
+          </div>
+          <div>
+            <p id="redirect">
+              <a href="C:\Users\santarosa\Documents\Blas\login-register-forms\register.html">Don't you have an account? Sign in here.</a>
+            </p>
+          </div>
+          <div id="buttons">
+            <div class="submitBtn">
+              <button id="submitForm" value="submit">
+                Sign In
+              </button>
+            </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <p>
+        RT Web Design, Copyright &copy; 2021
+      </p>
+    </footer>
   </body>
-  <script src="js/login.js"></script>
+  <script src="js/register.js"></script>
 </html>
