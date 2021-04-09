@@ -6,6 +6,7 @@ var wName = document.getElementById('wName');
 var wEmail = document.getElementById('wEmail');
 var wPassword = document.getElementById('wPassword');
 var wRepeat = document.getElementById('wRepeat');
+var submitForm = document.getElementById('submitForm')
 
 fullName.onblur = validateName;
 function validateName() {
@@ -52,3 +53,16 @@ password.onfocus = function () {
 repeatPass.onfocus = function () {
   wRepeat.style.display = 'none';
 }
+
+async function getUsers(){
+  fetch(`https://jsonplaceholder.typicode.com/users?email=${email.value}`)
+  .then(function(response){
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch()
+};
+
+submitForm.onclick = function() {
+  getUsers();
+};
