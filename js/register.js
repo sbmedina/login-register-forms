@@ -1,30 +1,54 @@
-var validations = document.getElementById('validations');
-var registerForm = document.getElementById('registerForm');
-var validationResults = 'Validation Result: ';
-var fields = document.querySelectorAll('input');
+var fullName = document.getElementById('fullName');
+var email = document.getElementById('email');
+var password = document.getElementById('password');
+var repeatPass = document.getElementById('repeatPass');
+var wName = document.getElementById('wName');
+var wEmail = document.getElementById('wEmail');
+var wPassword = document.getElementById('wPassword');
+var wRepeat = document.getElementById('wRepeat');
 
-var validationForm = function() {
-  if (registerForm) {
-    validations.innerHTML(validationResults + 'Form is found ')
+fullName.onblur = validateName;
+function validateName() {
+  if (!(/^[a-zA-Z]+(?:\s[a-zA-Z]+)+$/.test(fullName.value)) || fullName.value.length < 6) {
+    wName.textContent = 'Name should have more than 6 characters and a space between words';
+    wName.style.color = 'red';
+    wName.style.display = 'block';
   }
 }
-validationForm();
-
-var fieldsVal = function() {
-  if (fields.length = 4) {
-    validations.innerHTML(validationResults )
-  }
-  else {
-    validations.innerHTML('There are missing fields')
+email.onblur = validateEmail;
+function validateEmail() {
+  if (!(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(email.value))) {
+    wEmail.textContent = 'Insert a valid email';
+    wEmail.style.color = 'red';
+    wEmail.style.display = 'block';
   }
 }
-fieldsVal();
-
-var fieldsReq = function() {
-  if (fields = true) {
-    validations.innerHTML(validationResults + 'Every fields are required')
-  } else {
-    validations.innerHTML(validationResults + ' Required fields are missing')
+password.onblur = validatePassword;
+function validatePassword() {
+  if (!(/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/.test(password.value))) {
+    wPassword.textContent = 'Password should have at least 8 characters (letters and numbers)';
+    wPassword.style.color = 'red';
+    wPassword.style.display = 'block';
+  } else if (password.value);
+}
+repeatPass.onblur = repeatPassword;
+function repeatPassword() {
+  if (repeatPass.value !== password.value) {
+    wRepeat.textContent = 'The password does not match';
+    wRepeat.style.color = 'red';
+    wRepeat.style.display = 'block';
   }
 }
-fieldsReq();
+
+fullName.onfocus = function () {
+  wName.style.display = 'none';
+}
+email.onfocus = function () {
+  wEmail.style.display = 'none';
+}
+password.onfocus = function () {
+  wPassword.style.display = 'none';
+}
+repeatPass.onfocus = function () {
+  wRepeat.style.display = 'none';
+}
