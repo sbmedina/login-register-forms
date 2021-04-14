@@ -6,7 +6,15 @@ var wName = document.getElementById('wName');
 var wEmail = document.getElementById('wEmail');
 var wPassword = document.getElementById('wPassword');
 var wRepeat = document.getElementById('wRepeat');
-var submitForm = document.getElementById('submitForm')
+var submitForm = document.getElementById('submitForm');
+var validations = document.getElementById('validations');
+var fields = {
+  fullName: false,
+  email:false,
+  password: false,
+  repeatPass: false,
+}
+var rForm = document.getElementById('registerForm')
 
 fullName.onblur = validateName;
 function validateName() {
@@ -14,6 +22,8 @@ function validateName() {
     wName.textContent = 'Name should have more than 6 characters and a space between words';
     wName.style.color = 'red';
     wName.style.display = 'block';
+  } else {
+    fields['fullName'] = true;
   }
 }
 email.onblur = validateEmail;
@@ -22,6 +32,8 @@ function validateEmail() {
     wEmail.textContent = 'Insert a valid email';
     wEmail.style.color = 'red';
     wEmail.style.display = 'block';
+  } else {
+    fields['email'] = true;
   }
 }
 password.onblur = validatePassword;
@@ -30,7 +42,8 @@ function validatePassword() {
     wPassword.textContent = 'Password should have at least 8 characters (letters and numbers)';
     wPassword.style.color = 'red';
     wPassword.style.display = 'block';
-  } else if (password.value);
+  } else (password.value);
+    fields['password'] = true;
 }
 repeatPass.onblur = repeatPassword;
 function repeatPassword() {
@@ -38,6 +51,8 @@ function repeatPassword() {
     wRepeat.textContent = 'The password does not match';
     wRepeat.style.color = 'red';
     wRepeat.style.display = 'block';
+  } else {
+    fields['repeatPass'] = true;
   }
 }
 
@@ -54,15 +69,13 @@ repeatPass.onfocus = function () {
   wRepeat.style.display = 'none';
 }
 
-async function getUsers(){
+rForm.addEventListener('submit', function(e) {
+  e.preventDefault ();
+  submitForm.addEventListener('click', validations);
+  if (fields ['fullName'] && fields ['email'] && fields ['password'] && fields ['repeatPass']) {
+  validations.innerHTML = 'Registration successfully. User data: '+ fullName.value + " " + email.value + " " + password.value;
   fetch(`https://jsonplaceholder.typicode.com/users?email=${email.value}`)
-  .then(function(response){
-    return response.json();
-  })
-  .then(data => console.log(data))
-  .catch()
-};
-
-submitForm.onclick = function() {
-  getUsers();
-};
+  .then(response => response.json())
+  .then(data => console.log(data));
+  }
+})

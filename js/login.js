@@ -4,6 +4,11 @@ var wEmail = document.getElementById('wEmail');
 var wPassword = document.getElementById('wPassword');
 var validations = document.getElementById('validations')
 var submitForm = document.getElementById('submitForm')
+var fields = {
+  email:false,
+  password: false,
+}
+var rForm = document.getElementById('registerForm')
 
 email.onblur = validateEmail;
 function validateEmail() {
@@ -11,6 +16,8 @@ function validateEmail() {
     wEmail.textContent = 'Insert a valid email';
     wEmail.style.color = 'red';
     wEmail.style.display = 'block';
+  } else {
+    fields['email'] = true;
   }
 }
 password.onblur = validatePassword;
@@ -19,7 +26,8 @@ function validatePassword() {
     wPassword.textContent = 'Password should have at least 8 characters (letters and numbers)';
     wPassword.style.color = 'red';
     wPassword.style.display = 'block';
-  } else if (password.value);
+  } else (password.value);
+  fields['password'] = true;
 }
 
 email.onfocus = function () {
@@ -29,21 +37,15 @@ password.onfocus = function () {
   wPassword.style.display = 'none';
 }
 
-/*var form = []
-
-submitForm.addEventListener('click', function(){
-})
-form.push(email.value, password.value)*/
-
-async function getUsers(){
-  fetch(`https://jsonplaceholder.typicode.com/users?email=${email.value}`)
+rForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (fields['email'] && fields['password']) {
+    validations.textContent = 'Your account data is: ' + email.value + " " + password.value;
+    fetch(`https://jsonplaceholder.typicode.com/users?email=${email.value}`)
   .then(function(response){
     return response.json();
   })
   .then(data => console.log(data))
   .catch()
-};
-
-submitForm.onclick = function() {
-  getUsers();
-};
+  }
+})
