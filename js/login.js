@@ -1,51 +1,66 @@
-var email = document.getElementById('email');
-var password = document.getElementById('password');
-var wEmail = document.getElementById('wEmail');
-var wPassword = document.getElementById('wPassword');
-var validations = document.getElementById('validations')
-var submitForm = document.getElementById('submitForm')
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+var wEmail = document.getElementById("wEmail");
+var wPassword = document.getElementById("wPassword");
+var validations = document.getElementById("validations");
+var submitForm = document.getElementById("submitForm");
 var fields = {
-  email:false,
+  email: false,
   password: false,
-}
-var rForm = document.getElementById('registerForm')
+};
+var rForm = document.getElementById("registerForm");
 
 email.onblur = validateEmail;
 function validateEmail() {
-  if (!(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(email.value))) {
-    wEmail.textContent = 'Insert a valid email';
-    wEmail.style.color = 'red';
-    wEmail.style.display = 'block';
+  if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(email.value)) {
+    wEmail.textContent = "Insert a valid email";
+    wEmail.style.color = "red";
+    wEmail.style.display = "block";
   } else {
-    fields['email'] = true;
+    fields["email"] = true;
   }
 }
 password.onblur = validatePassword;
 function validatePassword() {
-  if (!(/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/.test(password.value))) {
-    wPassword.textContent = 'Password should have at least 8 characters (letters and numbers)';
-    wPassword.style.color = 'red';
-    wPassword.style.display = 'block';
-  } else (password.value);
-  fields['password'] = true;
+  if (!/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/.test(password.value)) {
+    wPassword.textContent =
+      "Password should have at least 8 characters (letters and numbers)";
+    wPassword.style.color = "red";
+    wPassword.style.display = "block";
+  } else password.value;
+  fields["password"] = true;
 }
 
 email.onfocus = function () {
-  wEmail.style.display = 'none';
-}
+  wEmail.style.display = "none";
+};
 password.onfocus = function () {
-  wPassword.style.display = 'none';
-}
+  wPassword.style.display = "none";
+};
 
-rForm.addEventListener('submit', function(e) {
+rForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (fields['email'] && fields['password']) {
-    validations.textContent = 'Your account data is: ' + email.value + " " + password.value;
-    fetch(`https://jsonplaceholder.typicode.com/users?email=${email.value}`)
-  .then(function(response){
-    return response.json();
-  })
-  .then(data => console.log(data))
-  .catch()
+  if (fields["email"] && fields["password"]) {
+    validations.textContent =
+      "Your account data is: " + email.value + " " + password.value;
+    sendLoginForm();
   }
-})
+});
+
+function sendLoginForm() {
+  fetch("http://localhost:7000/login", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch(function (error) {
+      console.log("Error trying to send the data");
+    });
+}
