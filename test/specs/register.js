@@ -1,0 +1,1 @@
+const RegisterPage = require('../pageobjects/register.page');
