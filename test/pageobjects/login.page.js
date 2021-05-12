@@ -1,13 +1,20 @@
 const Page = require('./page');
 
 class LoginPage extends Page {
-   
-    get inputUsername () { return $('#username') }
-    get inputPassword () { return $('#password') }
-    get btnSubmit () { return $('button[type="submit"]') }
 
+    get email () { return $('#email') };
+    get password () { return $('#password')};
+    get redirectToRegister () { return $('#redirect')};
+    get submitBtn () { return $('#buttons')};
+    get wrongEmailDiv () { return $('#wEmail')};
+    get wrongPasswordDiv () { return $('#wPassword')};
+    get validationsDiv () { return $('#validations')};
     open () {
         return super.open('login');
+    }
+
+    submit () {
+        this.submitBtn.click()
     }
 }
 
